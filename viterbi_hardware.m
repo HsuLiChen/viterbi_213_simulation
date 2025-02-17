@@ -1,7 +1,7 @@
 close all; clear; clc;
 
 %msg_source = [1 0 1 0 1 0]; 
-msg_source = randi([0 1], 1, 8190);  % 這裡示範 50 bits
+msg_source = randi([0 1], 1, 8190);
 conv_code = conv_hardware_213(msg_source);
 
 survivors = cell(4,1);       % 儲存各狀態的存活路徑
@@ -40,7 +40,7 @@ for step = 1:length(conv_code)/2
     if step >= D
         [~, best_state] = min(path_metrics);
         best_path = survivors{best_state};
-        decoded_bit = best_path(end-D+1);  % 取歷史中已確定的位元
+        decoded_bit = best_path(end-D+1);  
         decoded_msg = [decoded_msg, decoded_bit];
     end
 end
